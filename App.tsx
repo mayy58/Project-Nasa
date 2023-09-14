@@ -1,7 +1,9 @@
-import { SafeAreaView, StyleSheet, View } from "react-native";
-import Home from "./src/views/Home/Home";
+import React from "react";
 
-export default function App() {
+import { SafeAreaView, StyleSheet, View, Platform } from "react-native";
+import Routes from "./src/routes/Routes";
+
+function App(): JSX.Element {
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -11,7 +13,7 @@ export default function App() {
           paddingTop: Platform.OS === "android" && 40,
         }}
       >
-        <Home />
+        <Routes />
       </View>
     </SafeAreaView>
   );
@@ -23,3 +25,5 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(7,26,93,255)",
   },
 });
+
+export default App;

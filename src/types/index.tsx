@@ -7,3 +7,9 @@ export type PostImage = {
   title?: string;
   url?: string;
 };
+
+export type RootStackParams = {
+  //tipo de dato del navegador
+  Home: undefined;
+  Detail: undefined;
+};

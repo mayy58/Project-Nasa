@@ -1,17 +1,22 @@
 import React, { FC } from "react";
 import { View, Text, StyleSheet, Image, Button } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-import { PostImage } from "../../types";
+import { PostImage, PostImageNavigationProps } from "../../types";
 
-const TodaysImage: FC<PostImage> = ({ date, title, url }) => {
+const TodaysImage: FC<PostImage> = ({ date, title, url, explanation }) => {
   //FC functinal component de React, seguido por el tipo <PostImage> que esta declarado en la carpeta types en donde especifico el tipo de datos que me devuelve la api -->typescript
+  const { navigate } = useNavigation<PostImageNavigationProps>();
+  const handleViewPress = () => {
+    navigate("Detail", { title, date, url, explanation });
+  };
   return (
     <View style={styles.container}>
       <Image source={{ uri: url }} style={styles.image} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.date}>{date}</Text>
       <View style={styles.buttonContainer}>
-        <Button title="View" />
+        <Button title="View" onPress={handleViewPress} />
       </View>
     </View>
   );
